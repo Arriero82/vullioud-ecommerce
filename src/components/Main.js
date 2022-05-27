@@ -1,7 +1,7 @@
 const Main = () =>{
     return(
         <main>
-            <p>lorem ipsum</p>
+            <h2>Tickets for next concerts</h2>
         </main>
     )
 };
