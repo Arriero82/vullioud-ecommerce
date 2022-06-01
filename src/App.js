@@ -7,12 +7,11 @@ const App = () =>{
     return(
         <>
             <Header/>
-            <Main message="Tickets for next concerts"/>
             <ItemListContainer greeting="Welcome!"/>
+            <Main message="Tickets for next concerts"/>
             <Footer/>
         </>
     )
 };
-
 
 export default App; 
