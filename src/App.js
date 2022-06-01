@@ -7,7 +7,7 @@ const App = () =>{
     return(
         <>
             <Header/>
-            <Main/>
+            <Main message="Tickets for next concerts"/>
             <ItemListContainer greeting="Welcome!"/>
             <Footer/>
         </>

@@ -1,7 +1,7 @@
-const Main = () =>{
+const Main = (props) =>{
     return(
         <main>
-            <h2>Tickets for next concerts</h2>
+            <h2>{props.message}</h2>
         </main>
     )
 };
