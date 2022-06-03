@@ -1,10 +1,15 @@
-import { faHourglass2 } from "@fortawesome/free-solid-svg-icons";
-
+import ItemCount from "./ItemCount";
 
 const ItemListContainer = (props) =>{
+
+    const onAdd = () =>{
+        
+    }
+
     return(
         <div className = "ItemListContainer">
             <h2>{props.greeting}</h2>
+            <ItemCount initial={1} stock={5}/>
         </div>
     );
 }
