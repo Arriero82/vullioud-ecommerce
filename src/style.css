@@ -54,19 +54,50 @@ footer img{
     color: yellow;
 }
 
+main{
+    background-color: black;
+    color: yellow;
+    text-align: center;
+}
+
+main h3{
+    font-size: 3em;
+}
+
 .ItemListContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;   
     background-color: black;
     color: yellow;
     text-align: center;
 }
 
 .ItemListContainer h2{
-    font-size: 3em;
+    padding: 0.5em;
+    font-size: 2em;
+}
+
+.ItemListContainer h3{
+    padding: 0.5em;
+    font-size: 1.5em;
+}
+
+.ItemListContainer img{
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.ItemListContainer div{
+    margin: 20px;
+    min-width: 300px;
 }
 
 .counter{
-    border: solid yellow;
-    font-size: 3em;
+    font-size: 1em;
+    max-width: 200px;
+    margin: auto;
 }
 
 .btn {
@@ -77,7 +108,7 @@ footer img{
     text-align: center;
     text-decoration: none;
     display: inline-block;  
-    font-size: 32px;
+    font-size: 16px;
     border-radius: 10px;
     margin: 5px;
   }

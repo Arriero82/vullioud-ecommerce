@@ -1,7 +1,9 @@
+import ItemListContainer from "./ItemListContainer";
+
 const Main = (props) =>{
     return(
         <main>
-            <h2>{props.message}</h2>
+            <ItemListContainer greeting="Tickets for next concerts!"/>
         </main>
     )
 };

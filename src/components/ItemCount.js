@@ -1,7 +1,13 @@
 import { useState } from "react";
 import swal from "sweetalert";
+import React, {createContext} from "react";
 
 const ItemCount = (props) =>{
+
+
+    const onAdd = () =>{
+        
+    }
 
     const[count, setCount] = useState(props.initial);
 
@@ -11,7 +17,7 @@ const ItemCount = (props) =>{
     }
 
     const delCount = () =>{
-        if(count>0)
+        if(count>1)
         setCount(count - 1)
     }
 
@@ -33,7 +39,6 @@ const ItemCount = (props) =>{
             <button className="btn" onClick={delCount}>-</button>
             <p>You have selected {count} tickets</p> 
             <button className="btn" onClick={confirmCart}>Confirm</button>
-
         </div>
     );
 }
