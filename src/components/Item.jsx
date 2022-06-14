@@ -7,8 +7,8 @@ const Item = ({id, name, image, price, stock}) =>{
         <div key={id}>
             <h2>{name}</h2>
             <img src={image} alt={name}/>
-            <h3>Price ${price}</h3>
-            <ItemCount stock={stock} initial={1}/>
+           {/*  <h3>Price ${price}</h3> */}
+            {/* <ItemCount stock={stock} initial={1}/> */}
         </div>      
     )
 }

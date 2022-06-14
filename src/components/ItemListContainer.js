@@ -23,7 +23,7 @@ const ItemListContainer = (props) =>{
             <>
                 <h3>{props.greeting}</h3>
                 <div className = "ItemListContainer">
-                    <ItemList  concerts={Items}/>
+                    <ItemList concerts={Items}/>
                 </div>
             </>
         );

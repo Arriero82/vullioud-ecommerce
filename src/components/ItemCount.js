@@ -1,15 +1,15 @@
 import { useState } from "react";
 import swal from "sweetalert";
 import React, {createContext} from "react";
+import concerts from "../utilities/concerts";
 
 const ItemCount = (props) =>{
-
 
     const onAdd = () =>{
         
     }
 
-    const[count, setCount] = useState(props.initial);
+    const [count, setCount] = useState(props.initial);
 
     const addCount = () =>{
         if(count<props.stock)
@@ -17,13 +17,13 @@ const ItemCount = (props) =>{
     }
 
     const delCount = () =>{
-        if(count>1)
+        if(count>props.initial)
         setCount(count - 1)
     }
 
-    const [cartCount, setCartCount] = useState(props.stock)
-    
-    const confirmCart = () => {
+    const [cartCount, setCartCount] = useState(props.stock);
+
+       const confirmCart = () => {
         if(count<=cartCount){
             setCartCount(cartCount-count)
             swal(count + " tickets added to the cart", "Remaining "+ (cartCount-count) + " tickets");
