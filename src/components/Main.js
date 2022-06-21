@@ -7,7 +7,7 @@ const Main = (props) =>{
         <main>
             <Routes>
                 <Route path="/" element={<ItemListContainer greeting="Tickets for next concerts"/>}/>
-                <Route path="/detail/:id" element={<ItemDetailContainer/>}/>
+                <Route path="/concert/:id" element={<ItemDetailContainer/>}/>
                 <Route path="/category/:categoryId" element={<ItemListContainer greeting="Tickets for next concerts"/>}/>
             </Routes>  
         </main>
