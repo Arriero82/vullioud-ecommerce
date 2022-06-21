@@ -94,6 +94,11 @@ main h3{
     min-width: 300px;
 }
 
+.ItemListContainer div a{
+    text-decoration: none;
+    color: yellow;
+}
+
 .counter{
     font-size: 1em;
     max-width: 200px;

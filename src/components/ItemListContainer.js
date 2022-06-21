@@ -1,19 +1,27 @@
 import ItemCount from "./ItemCount";
 import { useState, useEffect } from "react";
-import customFetch from "../utilities/customFetch";
-import concerts from "../utilities/concerts";
+import { customFetch, getConcertByCategory } from "../utilities/customFetch";
 import ItemList from "./ItemList";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = (props) =>{
 
     const [Items, setItems] = useState([]);
 
-    useEffect(() => {
-        customFetch(2000, concerts)
-        .then(res => setItems(res))
-    }, [Items])
+    const {categoryId} = useParams();
 
-    if(Items.length < 1){
+    useEffect(() => {   
+    
+        if(!categoryId){
+            customFetch()
+            .then(res => setItems(res))
+        }else{
+            getConcertByCategory(parseInt(categoryId))
+            .then(res => setItems(res))
+        }
+    }, [categoryId])    
+    
+  if(Items.length < 1){
         return(
             <h2>Loading, please wait</h2>
         )
@@ -27,7 +35,7 @@ const ItemListContainer = (props) =>{
                 </div>
             </>
         );
-    }
+    } 
     
 }
 

@@ -1,17 +1,18 @@
 import Header from "./components/Header";
-import Main from "./components/Main";
 import Footer from "./components/Footer";
-import ItemDetailContainer from "./components/ItemDetailContainer";
+import { BrowserRouter } from "react-router-dom";
+import Main from "./components/Main";
 
 const App = () =>{
-    return(
-        <>
+
+    return( 
+        <BrowserRouter>
             <Header />
             <Main />
-            <ItemDetailContainer />
             <Footer />
-        </>
+        </BrowserRouter>
     )
 };
 
 export default App; 
+            

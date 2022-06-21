@@ -1,6 +1,5 @@
 import React from "react";
 import ItemCount from "./ItemCount";    
-import concerts from "../utilities/concerts";
 
 const ItemDetail = (props) =>{
 

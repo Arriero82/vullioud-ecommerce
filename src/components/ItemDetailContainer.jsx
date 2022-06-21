@@ -1,22 +1,23 @@
 import React, {useEffect, useState} from "react";
-import customFetch from "../utilities/customFetch";
+import { getConcertById } from "../utilities/customFetch";
 import ItemDetail from "./ItemDetail";
-import concerts from "../utilities/concerts";
+import { useParams } from "react-router-dom";
 
-const ItemDetailContainer = (props) =>{
+const ItemDetailContainer = () =>{
 
     const [Item, setItem] = useState({});
 
+    const {id} = useParams();
+
     useEffect(() =>{
-        customFetch(2000,concerts[1])
-        .then(res => setItem(res))
-    }, [Item])
+        getConcertById(parseInt(id))
+        .then(res => {setItem(res)})
+    }, [])
 
     return(
-        <ItemDetail image={Item.image} name={Item.name} price={Item.price} description={Item.description} stock={Item.stock}/>
+       <ItemDetail {...Item}/>
     )
     
 }
 
 export default ItemDetailContainer;
-

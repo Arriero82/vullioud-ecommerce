@@ -1,9 +1,15 @@
 import ItemListContainer from "./ItemListContainer";
+import ItemDetailContainer from "./ItemDetailContainer";
+import {Route, Routes} from "react-router-dom"
 
 const Main = (props) =>{
     return(
         <main>
-            <ItemListContainer greeting="Tickets for next concerts!"/>
+            <Routes>
+                <Route path="/" element={<ItemListContainer greeting="Tickets for next concerts"/>}/>
+                <Route path="/detail/:id" element={<ItemDetailContainer/>}/>
+                <Route path="/category/:categoryId" element={<ItemListContainer greeting="Tickets for next concerts"/>}/>
+            </Routes>  
         </main>
     )
 };
