@@ -8,7 +8,7 @@ const ItemDetailContainer = () =>{
     const [Item, setItem] = useState({});
 
     const {id} = useParams();
-
+  
     useEffect(() =>{
         getConcertById(parseInt(id))
         .then(res => {setItem(res)})

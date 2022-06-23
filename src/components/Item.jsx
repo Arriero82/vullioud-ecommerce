@@ -12,4 +12,4 @@ const Item = ({id, name, image}) =>{
     )
 }
 
-export default Item;
+export default Item;                
