@@ -19,7 +19,7 @@ const ItemCount = (props) =>{
     const confirmCart = () => {
         swal(count + " tickets added to the cart");
         props.onAdd(count);
-    
+        
     }
 
     return( 

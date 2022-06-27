@@ -7,8 +7,7 @@ const NavBar = () =>{
             <NavLink to="category/1">South America</NavLink>
             <NavLink to="category/2">North America</NavLink>
             <NavLink to="category/3">Asia</NavLink>
-            <NavLink to="/Cart"><CartWidget/></NavLink>
-            
+            <CartWidget/> 
         </div>
     )
 };

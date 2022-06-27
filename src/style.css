@@ -41,7 +41,7 @@ footer img{
     text-decoration: none;
     margin-right: 1rem;
     color: yellow;
-    font-size: 2rem;
+    font-size: 2rem;    
 }
 
 .shoppingCart{
@@ -50,8 +50,9 @@ footer img{
     padding: 0.1em 0.5em;
 }
 
-.shoppingCart p{
+.shoppingCart a{
     color: yellow;
+    text-decoration: none;
 }
 
 main{

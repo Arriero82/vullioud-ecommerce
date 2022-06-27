@@ -2,14 +2,18 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { BrowserRouter } from "react-router-dom";
 import Main from "./components/Main";
+import { MyProvider } from "./components/CartContext";
+
 
 const App = () =>{
 
     return( 
-        <BrowserRouter>
-            <Header />
-            <Main />
-            <Footer />
+        <BrowserRouter> 
+            <MyProvider>
+                <Header />
+                <Main />
+                <Footer />
+            </MyProvider>
         </BrowserRouter>
     )
 };
