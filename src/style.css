@@ -120,7 +120,23 @@ main h3{
 .detail img{
     max-width: 600px;
     margin: auto;
-}   
+}       
+
+.cartItems{
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+}
+
+.cartItems h3{
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.cartItems p{
+    font-size: 1.5rem;
+    margin-right: 1rem;   
+}
 
 .btn {
     background-color: black;
