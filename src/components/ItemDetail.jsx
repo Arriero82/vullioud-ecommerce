@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ItemCount from "./ItemCount"; 
 import { useContext } from "react"; 
 import CartWidget from "./CartWidget";
-import { context } from './CartContext';   
+import { context} from './CartContext';   
 import { useParams } from "react-router-dom";     
 import concerts from "../utilities/concerts";
 
@@ -16,7 +16,8 @@ const ItemDetail = (props) =>{
 
      const onAdd = (q) =>{   
         setQuantity(q);
-        res.addConcert(concerts[id-1]);
+        res.addConcert(concerts[id-1], q)
+        console.log("Agregando al carrito: "+(concerts[id-1].name)+" cantidad: "+q);
     }
 
     if(props.name==undefined){   

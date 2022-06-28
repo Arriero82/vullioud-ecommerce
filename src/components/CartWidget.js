@@ -8,13 +8,9 @@ const CartWidget = () =>{
 
     const res = useContext(context);
 
-    console.log(res.cart);
-
-
-
     return(
         <div className='shoppingCart'>
-            <NavLink to="/Cart"><FontAwesomeIcon className='shoppingCart' icon={faCartShopping}/>{}</NavLink>
+            <NavLink to="/Cart"><FontAwesomeIcon className='shoppingCart' icon={faCartShopping}/>{res.cart.length == 0 ? null : res.cart.length}</NavLink>
         </div>
     );  
 }

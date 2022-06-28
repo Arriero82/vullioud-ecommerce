@@ -1,24 +1,39 @@
 import { createContext, useState } from "react";
-import concerts from "../utilities/concerts";
-import { getConcertById } from "../utilities/customFetch";
 
 export const context = createContext();
 
 const Provider = context.Provider;
 
 export const MyProvider = ({children}) =>{
-        
+
     const [cart, setCart] = useState([]);
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [total, setTotal] = useState(0);
 
-    const addCart = [];
+    const addConcert = (t, q) =>{
 
-    const addConcert = (t) =>{
-       setCart(t);
+        const addCart = [...cart];
+
+        const new_ticket = {
+            ...t,
+            q       
+        }   
+
+        const found = addCart.find(cart => cart.id == new_ticket.id)
+
+          if(!found){
+            addCart.push(new_ticket);   
+        }else{  
+            new_ticket.q+=found.q;
+            addCart.splice(addCart.indexOf(found),1);
+            addCart.push(new_ticket);
+        }
+        
+        setCart(addCart);
+        setTotalQuantity(new_ticket.q);
     }
 
-      const delConcert = (concert) => {
+    const delConcert = (t) => {
 
     }
 
@@ -33,7 +48,6 @@ export const MyProvider = ({children}) =>{
         addConcert: addConcert,
         delConcert : delConcert,
         delCart : delCart,
-        addCart : addCart,
     }
 
     return(
