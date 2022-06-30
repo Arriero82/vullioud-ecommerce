@@ -10,7 +10,7 @@ const CartWidget = () =>{
 
     return(
         <div className='shoppingCart'>
-            <NavLink to="/Cart"><FontAwesomeIcon className='shoppingCart' icon={faCartShopping}/>{res.cart.length == 0 ? null : res.cart.length}</NavLink>
+            <NavLink to="/Cart"><FontAwesomeIcon className='shoppingCart' icon={faCartShopping}/>{res.cart.length == 0 ? null : res.totalQuantity}</NavLink>
         </div>
     );  
 }

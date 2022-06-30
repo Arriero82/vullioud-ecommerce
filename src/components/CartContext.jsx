@@ -30,15 +30,21 @@ export const MyProvider = ({children}) =>{
         }
         
         setCart(addCart);
-        setTotalQuantity(new_ticket.q);
+        setTotalQuantity(addCart.map(ticket => ticket.q).reduce((a,b)=>a+b,0))
+        setTotal(addCart.map(ticket => ticket.q*ticket.price).reduce((a,b)=>a+b,0))
     }
 
-    const delConcert = (t) => {
-
+    const delConcert = (id) => {
+        const addCart = [...cart];
+        const found = addCart.find(cart => cart.id == id)
+        addCart.splice(addCart.indexOf(found),1);
+        setCart(addCart);
+        setTotalQuantity(addCart.map(ticket => ticket.q).reduce((a,b)=>a+b,0))
+        setTotal(addCart.map(ticket => ticket.q*ticket.price).reduce((a,b)=>a+b,0))
     }
 
     const delCart = () => {
-
+        setCart([]);
     }
 
     const contextValue = {

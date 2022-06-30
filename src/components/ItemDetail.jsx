@@ -17,7 +17,6 @@ const ItemDetail = (props) =>{
      const onAdd = (q) =>{   
         setQuantity(q);
         res.addConcert(concerts[id-1], q)
-        console.log("Agregando al carrito: "+(concerts[id-1].name)+" cantidad: "+q);
     }
 
     if(props.name==undefined){   
@@ -34,7 +33,7 @@ const ItemDetail = (props) =>{
                 <h2>Price ${props.price}</h2>
                 <h3>{props.description}</h3>
                 {quantity == 0 ? <ItemCount stock={props.stock} initial={1} onAdd={onAdd}/> : null}
-                {/* <p>Go to </p><CartWidget/> */}
+                {quantity == 0 ? null : <div><p>Go to </p><CartWidget/></div>}
             </div>
         )
    }

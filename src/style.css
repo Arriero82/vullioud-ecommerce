@@ -20,7 +20,8 @@ footer{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content:space-between;
+    font-size: 1.5rem;
+    justify-content:space-evenly;
     background-color: black;
     color: yellow;
 }
@@ -59,6 +60,7 @@ main{
     background-color: black;
     color: yellow;
     text-align: center;
+    min-height: 60vh;
 }
 
 main h3{
@@ -125,6 +127,7 @@ main h3{
 .cartItems{
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 1em;
 }
 
@@ -136,6 +139,17 @@ main h3{
 .cartItems p{
     font-size: 1.5rem;
     margin-right: 1rem;   
+}
+
+.cartLinks{
+    color: yellow;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.cartTotal{
+    font-size: 1.5rem;
+    margin: 1rem;
 }
 
 .btn {
