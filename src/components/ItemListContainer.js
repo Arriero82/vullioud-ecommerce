@@ -1,8 +1,11 @@
-import ItemCount from "./ItemCount";
+    import ItemCount from "./ItemCount";
 import { useState, useEffect } from "react";
 import { customFetch, getConcertByCategory } from "../utilities/customFetch";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import {db} from "../firebaseConfig";
+import { getDocs, collection, query, where } from "firebase/firestore";
+
 
 const ItemListContainer = (props) =>{
 
@@ -10,7 +13,44 @@ const ItemListContainer = (props) =>{
 
     const {categoryId} = useParams();
 
-    useEffect(() => {   
+
+    useEffect(()=>{
+
+        const collectionConcerts = collection(db, "concerts");
+        const queryByCategory = query(collectionConcerts, where("category","==",parseInt(categoryId)))
+        const consult = getDocs(collectionConcerts);
+        const consultByCategory = getDocs(queryByCategory)
+
+        if(!categoryId){
+            consult
+        .then((result) => {
+            const concerts_map = result.docs.map((ref)=>{
+                const res = ref.data();
+                res.id = ref.id;
+                return res; 
+            })
+        setItems(concerts_map);
+        })  
+        .catch((error) => {
+            console.log(error);
+        })
+        }else{
+            consultByCategory
+            .then((result) => {
+                const concertsByCategory_map =  result.docs.map((ref) => {
+                    const res = ref.data();
+                    res.id = ref.id;
+                    return res;
+                })
+            setItems(concertsByCategory_map)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+    }, [categoryId])
+
+/*     useEffect(() => {   
     
         if(!categoryId){
             customFetch()
@@ -19,7 +59,7 @@ const ItemListContainer = (props) =>{
             getConcertByCategory(parseInt(categoryId))
             .then(res => setItems(res))
         }
-    }, [categoryId])    
+    }, [categoryId])  */   
     
   if(Items.length < 1){
         return(

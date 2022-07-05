@@ -10,14 +10,16 @@ export const MyProvider = ({children}) =>{
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [total, setTotal] = useState(0);
 
-    const addConcert = (t, q) =>{
+    const addConcert = (Item, q) =>{
 
         const addCart = [...cart];
 
         const new_ticket = {
-            ...t,
-            q       
+            ...Item,
+            q                   
         }   
+
+        console.log(new_ticket);
 
         const found = addCart.find(cart => cart.id == new_ticket.id)
 

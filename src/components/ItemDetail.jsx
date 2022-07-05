@@ -2,21 +2,37 @@ import React, { useState } from "react";
 import ItemCount from "./ItemCount"; 
 import { useContext } from "react"; 
 import CartWidget from "./CartWidget";
-import { context} from './CartContext';   
+import { context } from './CartContext';   
 import { useParams } from "react-router-dom";     
-import concerts from "../utilities/concerts";
+import {db} from "../firebaseConfig";
+import { collection, getDoc, doc } from "firebase/firestore";
 
 const ItemDetail = (props) =>{
 
+    const [Item, setItem] = useState({});
     const [quantity, setQuantity] = useState(0);        
 
-    const res = useContext(context);  
+    const res = useContext(context); 
     
     const {id} = useParams();
+    
+    const collectionConcerts = collection(db, "concerts");
+        const refDoc =  doc(collectionConcerts, id);
+        const consult = getDoc(refDoc);
 
-     const onAdd = (q) =>{   
+        consult
+        .then((result) => {
+            const rest = result.data();
+            rest.id = result.id;
+            setItem(rest);
+         })
+        .catch((error) => {
+            console.log(error);
+        })
+
+    const onAdd = (q) =>{   
         setQuantity(q);
-        res.addConcert(concerts[id-1], q)
+        res.addConcert(Item ,q);
     }
 
     if(props.name==undefined){   
@@ -33,7 +49,7 @@ const ItemDetail = (props) =>{
                 <h2>Price ${props.price}</h2>
                 <h3>{props.description}</h3>
                 {quantity == 0 ? <ItemCount stock={props.stock} initial={1} onAdd={onAdd}/> : null}
-                {quantity == 0 ? null : <div><p>Go to </p><CartWidget/></div>}
+                <p>Go to </p><CartWidget/>
             </div>
         )
    }
