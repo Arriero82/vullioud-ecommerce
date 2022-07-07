@@ -19,7 +19,7 @@ export const MyProvider = ({children}) =>{
             q                   
         }   
 
-        const found = addCart.find(cart => cart.id == new_ticket.id)
+        const found = addCart.find(cart => cart.id === new_ticket.id)
 
         if(!found){
             addCart.push(new_ticket);   
@@ -36,7 +36,7 @@ export const MyProvider = ({children}) =>{
 
     const delConcert = (id) => {
         const addCart = [...cart];
-        const found = addCart.find(cart => cart.id == id)
+        const found = addCart.find(cart => cart.id === id)
         addCart.splice(addCart.indexOf(found),1);
         setCart(addCart);
         setTotalQuantity(addCart.map(ticket => ticket.q).reduce((a,b)=>a+b,0))

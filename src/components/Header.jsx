@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () =>{
     return(
         <header>
-            <Link to="/"><img src={logo}/></Link>
+            <Link to="/"><img src={logo} alt="Iron Maiden logo"/></Link>
             <NavBar/>
         </header>
     )

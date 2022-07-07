@@ -5,8 +5,8 @@ const Footer = () =>{
     return(
         <footer>
             <p>Iron Maiden Copyright &copy; by Iron Maiden LLC</p>
-            <img src={logo}/>
-            {/* <NavBar/> */}
+            <img src={logo} alt="Eddie face"/>
+            <NavBar/>
         </footer>
     )
 };
