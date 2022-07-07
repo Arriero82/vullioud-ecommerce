@@ -34,7 +34,7 @@ const Cart = () => {
         <button className="btn"  onClick={res.delCart}>Delete all tickets</button>
         <Link to="/" className="btn" >Continue shopping</Link>
         <Link to="/checkout" className="btn"  >Proceed to Checkout</Link>
-      </> 
+        </> 
       : <Link to="/" className='cartLinks'>You haven't selected any tickets, click here</Link>}
     </>
   )
