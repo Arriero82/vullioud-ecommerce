@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const ItemDetail = (Item) =>{
 
-    const [Concert, setConcert] = useState({});
+    const [concert, setConcert] = useState();
     const [quantity, setQuantity] = useState(0);        
 
     const res = useContext(context); 
@@ -28,7 +28,7 @@ const ItemDetail = (Item) =>{
         res.addConcert(newItem ,q);
     }
 
-    if(Item.name===undefined){   
+    if(concert===undefined){   
        return(
             <div className="detail">
             <h2>Requesting data, please wait</h2>

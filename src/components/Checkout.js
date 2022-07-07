@@ -23,7 +23,7 @@ const Checkout = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e) => {   
         e.preventDefault();
         const objOrder = {
             buyer: {
