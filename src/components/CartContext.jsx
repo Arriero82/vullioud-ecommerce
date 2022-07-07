@@ -10,6 +10,12 @@ export const MyProvider = ({children}) =>{
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [total, setTotal] = useState(0);
 
+    const updateCart = (para) => {
+        setCart(para);
+        setTotalQuantity(para.map(ticket => ticket.q).reduce((a,b)=>a+b,0))
+        setTotal(para.map(ticket => ticket.q*ticket.price).reduce((a,b)=>a+b,0))
+    }
+
     const addConcert = (Item, q) =>{
 
         const addCart = [...cart];
@@ -28,19 +34,15 @@ export const MyProvider = ({children}) =>{
             addCart.splice(addCart.indexOf(found),1);
             addCart.push(new_ticket);
         }
-        
-        setCart(addCart);
-        setTotalQuantity(addCart.map(ticket => ticket.q).reduce((a,b)=>a+b,0))
-        setTotal(addCart.map(ticket => ticket.q*ticket.price).reduce((a,b)=>a+b,0))
+        updateCart(addCart)
+
     }
 
     const delConcert = (id) => {
         const addCart = [...cart];
         const found = addCart.find(cart => cart.id === id)
         addCart.splice(addCart.indexOf(found),1);
-        setCart(addCart);
-        setTotalQuantity(addCart.map(ticket => ticket.q).reduce((a,b)=>a+b,0))
-        setTotal(addCart.map(ticket => ticket.q*ticket.price).reduce((a,b)=>a+b,0))
+        updateCart(addCart)
     }
 
     const delCart = () => {
