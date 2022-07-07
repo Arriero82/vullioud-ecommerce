@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ItemCount from "./ItemCount"; 
 import { useContext } from "react"; 
 import CartWidget from "./CartWidget";
@@ -7,35 +7,30 @@ import { useParams } from "react-router-dom";
 import {db} from "../firebaseConfig";
 import { collection, getDoc, doc } from "firebase/firestore";
 
-const ItemDetail = (props) =>{
+const ItemDetail = (Item) =>{
 
-    const [Item, setItem] = useState({});
+    const [Concert, setConcert] = useState({});
     const [quantity, setQuantity] = useState(0);        
 
     const res = useContext(context); 
-    
+
     const {id} = useParams();
     
-    const collectionConcerts = collection(db, "concerts");
-        const refDoc =  doc(collectionConcerts, id);
-        const consult = getDoc(refDoc);
+    const newItem = {
+        ...Item,
+        id
+    }
 
-        consult
-        .then((result) => {
-            const rest = result.data();
-            rest.id = result.id;
-            setItem(rest);
-         })
-        .catch((error) => {
-            console.log(error);
-        })
+    useEffect(()=>{
+        setConcert(newItem)
+    },[])
 
     const onAdd = (q) =>{   
         setQuantity(q);
-        res.addConcert(Item ,q);
+        res.addConcert(newItem ,q);
     }
 
-    if(props.name==undefined){   
+    if(Item.name==undefined){   
        return(
             <div className="detail">
             <h2>Requesting data, please wait</h2>
@@ -44,12 +39,12 @@ const ItemDetail = (props) =>{
    }else{
         return(     
             <div className="detail">        
-                <img src={props.image} alt={props.name} />       
-                <h1>{props.name}</h1>           
-                <h2>Price ${props.price}</h2>
-                <h3>{props.description}</h3>
-                {quantity == 0 ? <ItemCount stock={props.stock} initial={1} onAdd={onAdd}/> : null}
-                <p>Go to </p><CartWidget/>
+                <img src={Item.image} alt={Item.name} />       
+                <h1>{Item.name}</h1>           
+                <h2>Price ${Item.price}</h2>
+                <h3>{Item.description}</h3>
+                {quantity == 0 ? <ItemCount stock={Item.stock} initial={1} onAdd={onAdd}/> : <><p>Go to </p><CartWidget/></>}
+                
             </div>
         )
    }

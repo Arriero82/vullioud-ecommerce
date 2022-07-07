@@ -19,11 +19,9 @@ export const MyProvider = ({children}) =>{
             q                   
         }   
 
-        console.log(new_ticket);
-
         const found = addCart.find(cart => cart.id == new_ticket.id)
 
-          if(!found){
+        if(!found){
             addCart.push(new_ticket);   
         }else{  
             new_ticket.q+=found.q;

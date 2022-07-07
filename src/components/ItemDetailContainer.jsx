@@ -27,7 +27,7 @@ const ItemDetailContainer = () =>{
             console.log(error);
         })
          
-    }, [])      
+    }, [id])      
 
     return(
        <ItemDetail {...Item}/>

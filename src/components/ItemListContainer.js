@@ -1,6 +1,4 @@
-    import ItemCount from "./ItemCount";
 import { useState, useEffect } from "react";
-import { customFetch, getConcertByCategory } from "../utilities/customFetch";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import {db} from "../firebaseConfig";
@@ -13,54 +11,27 @@ const ItemListContainer = (props) =>{
 
     const {categoryId} = useParams();
 
-
     useEffect(()=>{
 
         const collectionConcerts = collection(db, "concerts");
-        const queryByCategory = query(collectionConcerts, where("category","==",parseInt(categoryId)))
-        const consult = getDocs(collectionConcerts);
-        const consultByCategory = getDocs(queryByCategory)
 
-        if(!categoryId){
-            consult
-        .then((result) => {
-            const concerts_map = result.docs.map((ref)=>{
+        const consult = categoryId ?
+        query(collectionConcerts, where("category","==",parseInt(categoryId)))
+        : collectionConcerts
+        
+        getDocs(consult).then((result) => {
+            const concertsMap = result.docs.map((ref)=>{
                 const res = ref.data();
                 res.id = ref.id;
                 return res; 
             })
-        setItems(concerts_map);
-        })  
+        setItems(concertsMap);
+        })
         .catch((error) => {
             console.log(error);
-        })
-        }else{
-            consultByCategory
-            .then((result) => {
-                const concertsByCategory_map =  result.docs.map((ref) => {
-                    const res = ref.data();
-                    res.id = ref.id;
-                    return res;
-                })
-            setItems(concertsByCategory_map)
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-        }
+        }) 
     }, [categoryId])
-
-/*     useEffect(() => {   
-    
-        if(!categoryId){
-            customFetch()
-            .then(res => setItems(res))
-        }else{
-            getConcertByCategory(parseInt(categoryId))
-            .then(res => setItems(res))
-        }
-    }, [categoryId])  */   
-    
+  
   if(Items.length < 1){
         return(
             <h2>Loading, please wait</h2>

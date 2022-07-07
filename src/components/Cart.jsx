@@ -27,12 +27,16 @@ const Cart = () => {
 
   return(
     <>
-    {res.cart.length >0 ? <div>{CartItems}</div> : <Link to="/" className='cartLinks'>You haven't selected any tickets, click here</Link>}
-    {res.cart.length >0 ? <div><p className='cartTotal'>Total :{res.total}</p></div> : null}
-    {res.cart.length >0 ? <button className="btn"  onClick={res.delCart}>Delete all tickets</button> : null}
+    {res.cart.length >0 ? 
+    <><div>{CartItems}</div>
+    <div><p className='cartTotal'>Total :{res.total}</p></div>
+    <button className="btn"  onClick={res.delCart}>Delete all tickets</button>
+    <Link to="/checkout" className="btn"  >Proceed to Checkout</Link>
+    </> : <Link to="/" className='cartLinks'>You haven't selected any tickets, click here</Link>}
     </>
   )
 
 }
 
 export default Cart
+
