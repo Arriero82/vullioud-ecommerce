@@ -21,7 +21,7 @@ Sencilla landing para ecommerce, en este caso venta de tickets.
 git clone https://github.com/Arriero82/vullioud-ecommerce.git
 ```
 
-2. Posicionado dentro la carpeta creada en el paso anterior, usar npm i para instalar lo que necesita la aplicación para ejecutarse
+2. Posicionado dentro la carpeta creada en el paso anterior, usar npm i para instalar lo que necesita la aplicación para ejecutarse.
 
 ````
 $ npm i
@@ -43,4 +43,4 @@ $ npm start
 
 ### Link al deploy
 
-[Click aqui para ver la pagina](https://friendly-bienenstitch-a02bcc.netlify.app/)
+[Click aquí para ver la pagina](https://friendly-bienenstitch-a02bcc.netlify.app/)
